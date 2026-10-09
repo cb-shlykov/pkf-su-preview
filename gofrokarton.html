@@ -10,7 +10,7 @@
   @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=PT+Sans:wght@400;700&display=swap');
   * { box-sizing: border-box; }
   body { margin: 0; font-family: 'PT Sans', sans-serif; color: #1A1D23; background: #FFFFFF; }
-  .su { width: 1320px; margin: 0 auto; }
+  .su { width: 100%; max-width: 1320px; margin: 0 auto; }
   .su-wrap { max-width: 1320px; margin: 0 auto; padding: 0 48px; }
   .su-label { font-size: 12px; text-transform: uppercase; letter-spacing: 0.12em; color: #8B5E3C; font-weight: 700; }
   .su-h1 { font-family: 'Oswald', sans-serif; font-size: 46px; font-weight: 700; line-height: 1.1; margin: 0 0 18px; color: #1A1D23; }
@@ -66,7 +66,8 @@
     .cat-callout { flex-direction:column !important; align-items:flex-start !important; padding:24px !important; }
     .cat-callout button { width:100%; }
     .cat-advantages-grid { grid-template-columns:1fr !important; }
-    .cat-cta-grid { grid-template-columns:1fr !important; }
+    .cat-cta-grid { grid-template-columns:minmax(0,1fr) !important; }
+    .cat-cta-grid > * { min-width:0; }
     .cat-bottombar { flex-direction:column !important; align-items:flex-start !important; gap:8px; }
   }
 
@@ -99,8 +100,29 @@
   .contact-item-icon svg { width:18px; height:18px; stroke:#8B5E3C; stroke-width:1.8; fill:none; }
   .contact-item-label { font-size:11px; color:#6B7280; letter-spacing:.08em; text-transform:uppercase; margin-bottom:3px; }
   .contact-item-val { font-size:15px; color:#1A1D23; font-weight:700; }
+  .contact-item-val a { color:inherit; text-decoration:none; }
   .route-btn { display:none; align-items:center; justify-content:center; gap:7px; margin-top:12px; padding:12px 14px; background:rgba(37,99,172,.08); border-radius:6px; color:#2563AC; font-size:14px; font-weight:700; text-decoration:none; box-sizing:border-box; width:100%; }
   .map-preview { border-radius:8px; overflow:hidden; height:200px; border:1px solid #EADFCF; }
+
+  /* MOBILE — доработки адаптива */
+  @media (max-width: 768px) {
+    .su-wrap { padding-left:20px !important; padding-right:20px !important; }
+    .cat-burger { width:44px; height:44px; padding:7px; margin-right:-7px; }
+    .contact-item-val a, .contact-val a { display:inline-block; padding:6px 0; }
+    .form-wrap { padding:24px 20px; }
+    .cat-callout > div:first-child { flex-direction:column; gap:14px !important; }
+    .cat-callout button { white-space:normal !important; }
+    .fefco-card { display:flex; flex-direction:column; }
+    .fefco-card > div:last-child { flex:1; display:flex; flex-direction:column; align-items:flex-start; }
+    .fefco-card .su-body { margin-bottom:12px; }
+    .fefco-order-btn { margin-top:auto !important; }
+    .cat-price-box { flex-direction:column; align-items:stretch !important; gap:14px !important; }
+    .cat-price-box button { width:100%; }
+  }
+  .pd-link { color:inherit; text-decoration:underline; text-underline-offset:2px; }
+  .pd-link:hover { color:#8B5E3C; }
+  .consent { display:flex; align-items:flex-start; gap:10px; font-size:12px; line-height:1.45; color:#6B7280; cursor:pointer; text-align:left; }
+  .consent input { width:18px; height:18px; min-width:18px; margin:0; accent-color:#8B5E3C; cursor:pointer; }
 </style>
 </head>
 <body>
@@ -111,7 +133,7 @@
     <div class="su-wrap" style="display:flex; align-items:center; justify-content:space-between; height:72px;">
       <div style="display:flex; align-items:center; gap:14px;">
         <a href="index.html" style="display:flex; align-items:center; gap:14px; text-decoration:none;">
-        <img src="https://m-files.cdn1.cc/lpfile/f/6/d/f6da50856caf4ccd4834c79492fd4df8/-/crop/0x0x315x345/-/resize/43/-/quality/85/f.png" width="41" height="44" style="display:block;">
+        <img src="images/site/logo.png" width="41" height="44" alt="ПКФ «Сырьё Урала»" style="display:block;">
         <span style="font-family:'Oswald',sans-serif; font-size:23px; font-weight:700; color:#1A1D23;">ПКФ Сырьё Урала</span>
         </a>
       </div>
@@ -161,7 +183,7 @@
         </div>
       </div>
       <div class="cat-split-media" style="border-radius:8px; overflow:hidden; border:1px solid #EADFCF; height:340px;">
-        <img class="su-photo" src="images/new/Листовой и рулоны.jpg" alt="Гофрокартон в рулонах и листах собственного производства">
+        <img class="su-photo" src="images/site/listovoy-rulony.webp" alt="Гофрокартон в рулонах и листах собственного производства">
       </div>
     </div>
   </div>
@@ -180,7 +202,7 @@
         <a href="gofrokarton-rulonnyy.html" style="text-decoration:none; color:inherit;">
         <div class="su-card" style="padding:0; overflow:hidden; background:#fff; cursor:pointer;">
           <div class="cat-card-photo" style="height:270px; overflow:hidden; border-bottom:1px solid #EADFCF;">
-            <img class="su-photo" src="images/new/Рулоны2.jpg" alt="Рулонный гофрокартон">
+            <img class="su-photo" src="images/site/rulony-2.webp" alt="Рулонный гофрокартон">
           </div>
           <div style="padding:26px 28px;">
             <h3 class="su-h3">Рулонный гофрокартон</h3>
@@ -197,7 +219,7 @@
         <a href="gofrokarton-listovoy.html" style="text-decoration:none; color:inherit;">
         <div class="su-card" style="padding:0; overflow:hidden; background:#fff; cursor:pointer;">
           <div class="cat-card-photo" style="height:270px; overflow:hidden; border-bottom:1px solid #EADFCF;">
-            <img class="su-photo" src="images/new/Листы.jpg" alt="Листовой гофрокартон">
+            <img class="su-photo" src="images/site/listy.webp" alt="Листовой гофрокартон">
           </div>
           <div style="padding:26px 28px;">
             <h3 class="su-h3">Листовой гофрокартон</h3>
@@ -214,7 +236,7 @@
         <a href="mikrogofra.html" style="text-decoration:none; color:inherit;">
         <div class="su-card" style="padding:0; overflow:hidden; background:#fff; cursor:pointer;">
           <div class="cat-card-photo" style="height:270px; overflow:hidden; border-bottom:1px solid #EADFCF;">
-            <img class="su-photo" src="images/new/ico/Мирокгофрокартон.jpg" alt="Микрогофрокартон">
+            <img class="su-photo" src="images/site/card-mikrogofra.webp" alt="Микрогофрокартон">
           </div>
           <div style="padding:26px 28px;">
             <h3 class="su-h3">Микрогофрокартон</h3>
@@ -308,9 +330,12 @@
           </div>
           <textarea class="su-input" rows="3" name="message" placeholder="Тип картона, марка, объём" style="resize:none;"></textarea>
           <input type="text" name="website" class="hp-field" tabindex="-1" autocomplete="off">
+          <div class="consent-field">
+            <label class="consent"><input type="checkbox" name="consent" value="yes" required><span>Я даю <a href="soglasie-na-obrabotku-pd.html" class="pd-link" target="_blank" rel="noopener">согласие на обработку персональных данных</a> и принимаю <a href="politika-personalnyh-dannyh.html" class="pd-link" target="_blank" rel="noopener">политику обработки персональных данных</a></span></label>
+            <span class="field-error">Подтвердите согласие на обработку персональных данных</span>
+          </div>
           <div class="smart-captcha" data-sitekey="TEST_SITEKEY_TODO"></div>
           <button class="su-btn-blue" type="submit" style="width:100%; padding:13px; font-size:15px;">Отправить заявку</button>
-          <p class="form-note">Нажимая кнопку, вы соглашаетесь с политикой обработки персональных данных</p>
         </form>
         <div class="form-success" style="display:none;">Спасибо! Заявка отправлена — мы свяжемся с вами в ближайшее время.</div>
       </div>
@@ -333,7 +358,7 @@
             </div>
             <div>
               <div class="contact-item-label">Телефоны</div>
-              <div class="contact-item-val">+7 343 328-66-90<br>+7 932 613-93-99</div>
+              <div class="contact-item-val"><a href="tel:+73433286690">+7 343 328-66-90</a><br><a href="tel:+79326139399">+7 932 613-93-99</a></div>
             </div>
           </div>
           <div class="contact-item">
@@ -342,7 +367,7 @@
             </div>
             <div>
               <div class="contact-item-label">Email</div>
-              <div class="contact-item-val">pkf-su@mail.ru</div>
+              <div class="contact-item-val"><a href="mailto:pkf-su@mail.ru">pkf-su@mail.ru</a></div>
             </div>
           </div>
         </div>
@@ -357,7 +382,7 @@
   <div style="background:#fff; border-top:1px solid #EADFCF;">
     <div class="su-wrap" style="padding:18px 0;">
       <div class="cat-bottombar" style="display:flex; justify-content:space-between; align-items:center;">
-        <span style="font-size:12px; color:#A0926F;">© 2013 · ПКФ «Сырьё Урала» · pkf-su.ru</span>
+        <span style="font-size:12px; color:#A0926F;">© 2013 · ПКФ «Сырьё Урала» · pkf-su.ru · <a href="politika-konfidencialnosti.html" style="color:#A0926F;">Политика конфиденциальности</a></span>
         <span style="font-size:12px; color:#A0926F;">* Цена ориентировочная, уточняется при оформлении заказа &nbsp;·&nbsp; ** При заказе от 1 000 штук</span>
       </div>
     </div>
@@ -382,9 +407,12 @@
       </div>
       <textarea class="su-input" rows="3" name="message" placeholder="Комментарий (необязательно)" style="resize:none;"></textarea>
       <input type="text" name="website" class="hp-field" tabindex="-1" autocomplete="off">
+      <div class="consent-field">
+        <label class="consent"><input type="checkbox" name="consent" value="yes" required><span>Я даю <a href="soglasie-na-obrabotku-pd.html" class="pd-link" target="_blank" rel="noopener">согласие на обработку персональных данных</a> и принимаю <a href="politika-personalnyh-dannyh.html" class="pd-link" target="_blank" rel="noopener">политику обработки персональных данных</a></span></label>
+        <span class="field-error">Подтвердите согласие на обработку персональных данных</span>
+      </div>
       <div class="smart-captcha" data-sitekey="TEST_SITEKEY_TODO"></div>
       <button class="su-btn-blue" type="submit" style="width:100%; padding:13px;">Отправить заявку</button>
-      <p style="font-size:11px; color:#A0A6AE; text-align:center; margin:0;">Нажимая кнопку, вы соглашаетесь с политикой обработки персональных данных</p>
     </form>
     <div class="form-success" id="modal-success" style="display:none;">Спасибо! Заявка отправлена — мы свяжемся с вами в ближайшее время.</div>
   </div>
@@ -419,6 +447,9 @@
     reqModal.classList.add('open');
     reqModalContext.textContent = context || '';
     reqForm.reset();
+    const reqSubmitBtn = reqForm.querySelector('button[type="submit"]');
+    reqSubmitBtn.disabled = false;
+    reqSubmitBtn.textContent = 'Отправить заявку';
     reqForm.style.display = '';
     reqModalSuccess.style.display = 'none';
     reqForm.querySelectorAll('.field-error.show').forEach(el => el.classList.remove('show'));
@@ -437,11 +468,17 @@
     btn.addEventListener('click', () => openRequestModal(btn.dataset.context || ''));
   });
 
+  document.querySelectorAll('.consent input').forEach(cb => cb.addEventListener('change', () => {
+    if (cb.checked) cb.closest('.consent-field').querySelector('.field-error').classList.remove('show');
+  }));
+
   function validateRequestForm(form) {
     let valid = true;
     form.querySelectorAll('[required]').forEach(field => {
-      const errorEl = field.nextElementSibling && field.nextElementSibling.classList.contains('field-error') ? field.nextElementSibling : null;
-      const filled = field.value.trim().length > 0;
+      const errorEl = field.type === 'checkbox'
+      ? field.closest('.consent-field').querySelector('.field-error')
+      : (field.nextElementSibling && field.nextElementSibling.classList.contains('field-error') ? field.nextElementSibling : null);
+      const filled = field.type === 'checkbox' ? field.checked : field.value.trim().length > 0;
       if (!filled) { valid = false; if (errorEl) errorEl.classList.add('show'); }
       else if (errorEl) errorEl.classList.remove('show');
     });

@@ -10,7 +10,7 @@
   @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=PT+Sans:wght@400;700&display=swap');
   * { box-sizing: border-box; }
   body { margin: 0; font-family: 'PT Sans', sans-serif; color: #1A1D23; background: #FFFFFF; }
-  .su { width: 1320px; margin: 0 auto; }
+  .su { width: 100%; max-width: 1320px; margin: 0 auto; }
   .su-wrap { max-width: 1320px; margin: 0 auto; padding: 0 48px; }
   .su-label { font-size: 12px; text-transform: uppercase; letter-spacing: 0.12em; color: #8B5E3C; font-weight: 700; }
   .su-h1 { font-family: 'Oswald', sans-serif; font-size: 46px; font-weight: 700; line-height: 1.1; margin: 0 0 18px; color: #1A1D23; }
@@ -73,7 +73,8 @@
     .fefco-diagram { height:76px !important; }
     .fefco-card .su-h3 { font-size:14px; }
     .fefco-card > div:last-child { padding:12px !important; }
-    .cat-cta-grid { grid-template-columns:1fr !important; }
+    .cat-cta-grid { grid-template-columns:minmax(0,1fr) !important; }
+    .cat-cta-grid > * { min-width:0; }
     .cat-bottombar { flex-direction:column !important; align-items:flex-start !important; gap:8px; }
   }
 
@@ -106,8 +107,29 @@
   .contact-item-icon svg { width:18px; height:18px; stroke:#8B5E3C; stroke-width:1.8; fill:none; }
   .contact-item-label { font-size:11px; color:#6B7280; letter-spacing:.08em; text-transform:uppercase; margin-bottom:3px; }
   .contact-item-val { font-size:15px; color:#1A1D23; font-weight:700; }
+  .contact-item-val a { color:inherit; text-decoration:none; }
   .route-btn { display:none; align-items:center; justify-content:center; gap:7px; margin-top:12px; padding:12px 14px; background:rgba(37,99,172,.08); border-radius:6px; color:#2563AC; font-size:14px; font-weight:700; text-decoration:none; box-sizing:border-box; width:100%; }
   .map-preview { border-radius:8px; overflow:hidden; height:200px; border:1px solid #EADFCF; }
+
+  /* MOBILE — доработки адаптива */
+  @media (max-width: 768px) {
+    .su-wrap { padding-left:20px !important; padding-right:20px !important; }
+    .cat-burger { width:44px; height:44px; padding:7px; margin-right:-7px; }
+    .contact-item-val a, .contact-val a { display:inline-block; padding:6px 0; }
+    .form-wrap { padding:24px 20px; }
+    .cat-callout > div:first-child { flex-direction:column; gap:14px !important; }
+    .cat-callout button { white-space:normal !important; }
+    .fefco-card { display:flex; flex-direction:column; }
+    .fefco-card > div:last-child { flex:1; display:flex; flex-direction:column; align-items:flex-start; }
+    .fefco-card .su-body { margin-bottom:12px; }
+    .fefco-order-btn { margin-top:auto !important; }
+    .cat-price-box { flex-direction:column; align-items:stretch !important; gap:14px !important; }
+    .cat-price-box button { width:100%; }
+  }
+  .pd-link { color:inherit; text-decoration:underline; text-underline-offset:2px; }
+  .pd-link:hover { color:#8B5E3C; }
+  .consent { display:flex; align-items:flex-start; gap:10px; font-size:12px; line-height:1.45; color:#6B7280; cursor:pointer; text-align:left; }
+  .consent input { width:18px; height:18px; min-width:18px; margin:0; accent-color:#8B5E3C; cursor:pointer; }
 </style>
 </head>
 <body>
@@ -118,7 +140,7 @@
     <div class="su-wrap" style="display:flex; align-items:center; justify-content:space-between; height:72px;">
       <div style="display:flex; align-items:center; gap:14px;">
         <a href="index.html" style="display:flex; align-items:center; gap:14px; text-decoration:none;">
-        <img src="https://m-files.cdn1.cc/lpfile/f/6/d/f6da50856caf4ccd4834c79492fd4df8/-/crop/0x0x315x345/-/resize/43/-/quality/85/f.png" width="41" height="44" style="display:block;">
+        <img src="images/site/logo.png" width="41" height="44" alt="ПКФ «Сырьё Урала»" style="display:block;">
         <span style="font-family:'Oswald',sans-serif; font-size:23px; font-weight:700; color:#1A1D23;">ПКФ Сырьё Урала</span>
         </a>
       </div>
@@ -176,7 +198,7 @@
         </div>
       </div>
       <div class="cat-split-media" style="border-radius:8px; overflow:hidden; border:1px solid #EADFCF; height:340px;">
-        <img class="su-photo" src="images/new/ico/Самосборные коробки.jpg" alt="Самосборные коробки из гофрокартона">
+        <img class="su-photo" src="images/site/card-samosbornye.webp" alt="Самосборные коробки из гофрокартона">
       </div>
     </div>
   </div>
@@ -195,7 +217,7 @@
 
         <!-- 0203 -->
         <div class="fefco-card">
-          <div class="fefco-diagram" style="background:#fff;"><img src="https://a-pak.lt/wp-content/uploads/2022/04/0203.png" alt="FEFCO 0203" style="max-width:78%; max-height:80px; object-fit:contain;"></div>
+          <div class="fefco-diagram" style="background:#fff;"><img src="images/site/fefco/fefco-0203.svg" alt="Схема коробки FEFCO 0203" loading="lazy" decoding="async" style="width:80%; height:80%; object-fit:contain;"></div>
           <div style="padding:16px 18px;">
             <span class="fefco-num">0203</span>
             <h3 class="su-h3" style="margin-top:10px;">Четырёхклапанный короб с полным нахлёстом клапанов</h3>
@@ -206,7 +228,7 @@
 
         <!-- 0211 -->
         <div class="fefco-card">
-          <div class="fefco-diagram" style="background:#fff;"><img src="https://a-pak.lt/wp-content/uploads/2022/04/0211.png" alt="FEFCO 0211" style="max-width:78%; max-height:80px; object-fit:contain;"></div>
+          <div class="fefco-diagram" style="background:#fff;"><img src="images/site/fefco/fefco-0211.svg" alt="Схема коробки FEFCO 0211" loading="lazy" decoding="async" style="width:80%; height:80%; object-fit:contain;"></div>
           <div style="padding:16px 18px;">
             <span class="fefco-num">0211</span>
             <h3 class="su-h3" style="margin-top:10px;">Трёхклапанный короб с симметричными клапанами</h3>
@@ -217,7 +239,7 @@
 
         <!-- 0215 -->
         <div class="fefco-card">
-          <div class="fefco-diagram" style="background:#fff;"><img src="https://a-pak.lt/wp-content/uploads/2022/04/0215.png" alt="FEFCO 0215" style="max-width:78%; max-height:80px; object-fit:contain;"></div>
+          <div class="fefco-diagram" style="background:#fff;"><img src="images/site/fefco/fefco-0215.svg" alt="Схема коробки FEFCO 0215" loading="lazy" decoding="async" style="width:80%; height:80%; object-fit:contain;"></div>
           <div style="padding:16px 18px;">
             <span class="fefco-num">0215</span>
             <h3 class="su-h3" style="margin-top:10px;">Трёхклапанная коробка с дном «ласточкин хвост»</h3>
@@ -228,7 +250,7 @@
 
         <!-- 0215-3 -->
         <div class="fefco-card">
-          <div class="fefco-diagram" style="background:#fff;"><img src="https://a-pak.lt/wp-content/uploads/2022/04/0215.png" alt="FEFCO 0215-3" style="max-width:78%; max-height:80px; object-fit:contain;"></div>
+          <div class="fefco-diagram" style="background:#fff;"><img src="images/site/fefco/fefco-0215-3.svg" alt="Схема коробки FEFCO 0215-3" loading="lazy" decoding="async" style="width:80%; height:80%; object-fit:contain;"></div>
           <div style="padding:16px 18px;">
             <span class="fefco-num">0215-3</span>
             <h3 class="su-h3" style="margin-top:10px;">Модификация 0215 под нестандартные пропорции</h3>
@@ -239,7 +261,7 @@
 
         <!-- 0217 -->
         <div class="fefco-card">
-          <div class="fefco-diagram" style="background:#fff;"><img src="https://a-pak.lt/wp-content/uploads/2022/04/0217.png" alt="FEFCO 0217" style="max-width:78%; max-height:80px; object-fit:contain;"></div>
+          <div class="fefco-diagram" style="background:#fff;"><img src="images/site/fefco/fefco-0217.svg" alt="Схема коробки FEFCO 0217" loading="lazy" decoding="async" style="width:80%; height:80%; object-fit:contain;"></div>
           <div style="padding:16px 18px;">
             <span class="fefco-num">0217</span>
             <h3 class="su-h3" style="margin-top:10px;">Четырёхклапанный короб-«книжка»</h3>
@@ -250,7 +272,7 @@
 
         <!-- 0402 -->
         <div class="fefco-card">
-          <div class="fefco-diagram" style="background:#fff;"><img src="https://a-pak.lt/wp-content/uploads/2022/04/0402.png" alt="FEFCO 0402" style="max-width:78%; max-height:80px; object-fit:contain;"></div>
+          <div class="fefco-diagram" style="background:#fff;"><img src="images/site/fefco/fefco-0402.svg" alt="Схема коробки FEFCO 0402" loading="lazy" decoding="async" style="width:80%; height:80%; object-fit:contain;"></div>
           <div style="padding:16px 18px;">
             <span class="fefco-num">0402</span>
             <h3 class="su-h3" style="margin-top:10px;">Обёрточная коробка со стыкующимися клапанами</h3>
@@ -261,7 +283,7 @@
 
         <!-- 0403 -->
         <div class="fefco-card">
-          <div class="fefco-diagram" style="background:#fff;"><img src="https://a-pak.lt/wp-content/uploads/2022/04/0403.png" alt="FEFCO 0403" style="max-width:78%; max-height:80px; object-fit:contain;"></div>
+          <div class="fefco-diagram" style="background:#fff;"><img src="images/site/fefco/fefco-0403.svg" alt="Схема коробки FEFCO 0403" loading="lazy" decoding="async" style="width:80%; height:80%; object-fit:contain;"></div>
           <div style="padding:16px 18px;">
             <span class="fefco-num">0403</span>
             <h3 class="su-h3" style="margin-top:10px;">Обёрточная коробка с усиленными клапанами</h3>
@@ -272,7 +294,7 @@
 
         <!-- 0420 -->
         <div class="fefco-card">
-          <div class="fefco-diagram" style="background:#fff;"><img src="https://a-pak.lt/wp-content/uploads/2022/04/0420.png" alt="FEFCO 0420" style="max-width:78%; max-height:80px; object-fit:contain;"></div>
+          <div class="fefco-diagram" style="background:#fff;"><img src="images/site/fefco/fefco-0420.svg" alt="Схема коробки FEFCO 0420" loading="lazy" decoding="async" style="width:80%; height:80%; object-fit:contain;"></div>
           <div style="padding:16px 18px;">
             <span class="fefco-num">0420</span>
             <h3 class="su-h3" style="margin-top:10px;">Коробка с откидной крышкой на фиксаторах-«ушках»</h3>
@@ -283,7 +305,7 @@
 
         <!-- 0421-1 -->
         <div class="fefco-card">
-          <div class="fefco-diagram" style="background:#fff;"><img src="https://a-pak.lt/wp-content/uploads/2022/04/0421.png" alt="FEFCO 0421-1" style="max-width:78%; max-height:80px; object-fit:contain;"></div>
+          <div class="fefco-diagram" style="background:#fff;"><img src="images/site/fefco/fefco-0421-1.svg" alt="Схема коробки FEFCO 0421-1" loading="lazy" decoding="async" style="width:80%; height:80%; object-fit:contain;"></div>
           <div style="padding:16px 18px;">
             <span class="fefco-num">0421-1</span>
             <h3 class="su-h3" style="margin-top:10px;">Самосборная коробка с откидной крышкой</h3>
@@ -294,7 +316,7 @@
 
         <!-- 0426 -->
         <div class="fefco-card">
-          <div class="fefco-diagram" style="background:#fff;"><img src="https://a-pak.lt/wp-content/uploads/2022/04/0426.png" alt="FEFCO 0426" style="max-width:78%; max-height:80px; object-fit:contain;"></div>
+          <div class="fefco-diagram" style="background:#fff;"><img src="images/site/fefco/fefco-0426.svg" alt="Схема коробки FEFCO 0426" loading="lazy" decoding="async" style="width:80%; height:80%; object-fit:contain;"></div>
           <div style="padding:16px 18px;">
             <span class="fefco-num">0426</span>
             <h3 class="su-h3" style="margin-top:10px;">Лоток с откидной крышкой и боковыми замками</h3>
@@ -305,7 +327,7 @@
 
         <!-- 0426-Pizza -->
         <div class="fefco-card">
-          <div class="fefco-diagram" style="background:#fff;"><img src="https://easypackmaker.com/images/dim/fefco_0426_Pizza+.svg" alt="FEFCO 0426-Pizza" style="max-width:78%; max-height:80px; object-fit:contain;"></div>
+          <div class="fefco-diagram" style="background:#fff;"><img src="images/site/fefco/fefco-0426-pizza.svg" alt="Схема коробки FEFCO 0426-Pizza" loading="lazy" decoding="async" style="width:80%; height:80%; object-fit:contain;"></div>
           <div style="padding:16px 18px;">
             <span class="fefco-num">0426-Pizza</span>
             <h3 class="su-h3" style="margin-top:10px;">Вариант 0426 для пиццы</h3>
@@ -316,7 +338,7 @@
 
         <!-- 0427 -->
         <div class="fefco-card">
-          <div class="fefco-diagram" style="background:#fff;"><img src="https://a-pak.lt/wp-content/uploads/2022/04/0427.png" alt="FEFCO 0427" style="max-width:78%; max-height:80px; object-fit:contain;"></div>
+          <div class="fefco-diagram" style="background:#fff;"><img src="images/site/fefco/fefco-0427.svg" alt="Схема коробки FEFCO 0427" loading="lazy" decoding="async" style="width:80%; height:80%; object-fit:contain;"></div>
           <div style="padding:16px 18px;">
             <span class="fefco-num">0427</span>
             <h3 class="su-h3" style="margin-top:10px;">Самосборная коробка с усиленными торцами</h3>
@@ -327,7 +349,7 @@
 
         <!-- 0432-1 -->
         <div class="fefco-card">
-          <div class="fefco-diagram" style="background:#fff;"><img src="https://a-pak.lt/wp-content/uploads/2022/04/0432.png" alt="FEFCO 0432-1" style="max-width:78%; max-height:80px; object-fit:contain;"></div>
+          <div class="fefco-diagram" style="background:#fff;"><img src="images/site/fefco/fefco-0432-1.svg" alt="Схема коробки FEFCO 0432-1" loading="lazy" decoding="async" style="width:80%; height:80%; object-fit:contain;"></div>
           <div style="padding:16px 18px;">
             <span class="fefco-num">0432-1</span>
             <h3 class="su-h3" style="margin-top:10px;">Лоток с усиленными боковыми и торцевыми стенками</h3>
@@ -338,7 +360,7 @@
 
         <!-- 0471-1 -->
         <div class="fefco-card">
-          <div class="fefco-diagram" style="background:#fff;"><img src="https://a-pak.lt/wp-content/uploads/2022/04/0471.png" alt="FEFCO 0471-1" style="max-width:78%; max-height:80px; object-fit:contain;"></div>
+          <div class="fefco-diagram" style="background:#fff;"><img src="images/site/fefco/fefco-0471-1.svg" alt="Схема коробки FEFCO 0471-1" loading="lazy" decoding="async" style="width:80%; height:80%; object-fit:contain;"></div>
           <div style="padding:16px 18px;">
             <span class="fefco-num">0471-1</span>
             <h3 class="su-h3" style="margin-top:10px;">Коробка с крышкой и фиксаторами-«ушками»</h3>
@@ -349,7 +371,7 @@
 
         <!-- 0470 -->
         <div class="fefco-card">
-          <div class="fefco-diagram" style="background:#fff;"><img src="https://a-pak.lt/wp-content/uploads/2022/04/0470.png" alt="FEFCO 0470" style="max-width:78%; max-height:80px; object-fit:contain;"></div>
+          <div class="fefco-diagram" style="background:#fff;"><img src="images/site/fefco/fefco-0470.svg" alt="Схема коробки FEFCO 0470" loading="lazy" decoding="async" style="width:80%; height:80%; object-fit:contain;"></div>
           <div style="padding:16px 18px;">
             <span class="fefco-num">0470</span>
             <h3 class="su-h3" style="margin-top:10px;">Коробка с откидной крышкой без фиксатора</h3>
@@ -448,9 +470,12 @@
           </div>
           <textarea class="su-input" rows="3" name="message" placeholder="Номер FEFCO или описание задачи" style="resize:none;"></textarea>
           <input type="text" name="website" class="hp-field" tabindex="-1" autocomplete="off">
+          <div class="consent-field">
+            <label class="consent"><input type="checkbox" name="consent" value="yes" required><span>Я даю <a href="soglasie-na-obrabotku-pd.html" class="pd-link" target="_blank" rel="noopener">согласие на обработку персональных данных</a> и принимаю <a href="politika-personalnyh-dannyh.html" class="pd-link" target="_blank" rel="noopener">политику обработки персональных данных</a></span></label>
+            <span class="field-error">Подтвердите согласие на обработку персональных данных</span>
+          </div>
           <div class="smart-captcha" data-sitekey="TEST_SITEKEY_TODO"></div>
           <button class="su-btn-blue" type="submit" style="width:100%; padding:13px; font-size:15px;">Отправить заявку</button>
-          <p class="form-note">Нажимая кнопку, вы соглашаетесь с политикой обработки персональных данных</p>
         </form>
         <div class="form-success" style="display:none;">Спасибо! Заявка отправлена — мы свяжемся с вами в ближайшее время.</div>
       </div>
@@ -473,7 +498,7 @@
             </div>
             <div>
               <div class="contact-item-label">Телефоны</div>
-              <div class="contact-item-val">+7 343 328-66-90<br>+7 932 613-93-99</div>
+              <div class="contact-item-val"><a href="tel:+73433286690">+7 343 328-66-90</a><br><a href="tel:+79326139399">+7 932 613-93-99</a></div>
             </div>
           </div>
           <div class="contact-item">
@@ -482,7 +507,7 @@
             </div>
             <div>
               <div class="contact-item-label">Email</div>
-              <div class="contact-item-val">pkf-su@mail.ru</div>
+              <div class="contact-item-val"><a href="mailto:pkf-su@mail.ru">pkf-su@mail.ru</a></div>
             </div>
           </div>
         </div>
@@ -497,7 +522,7 @@
   <div style="background:#fff; border-top:1px solid #EADFCF;">
     <div class="su-wrap" style="padding:18px 0;">
       <div class="cat-bottombar" style="display:flex; justify-content:space-between; align-items:center;">
-        <span style="font-size:12px; color:#A0926F;">© 2013 · ПКФ «Сырьё Урала» · pkf-su.ru</span>
+        <span style="font-size:12px; color:#A0926F;">© 2013 · ПКФ «Сырьё Урала» · pkf-su.ru · <a href="politika-konfidencialnosti.html" style="color:#A0926F;">Политика конфиденциальности</a></span>
       </div>
     </div>
   </div>
@@ -521,9 +546,12 @@
       </div>
       <textarea class="su-input" rows="3" name="message" placeholder="Комментарий (необязательно)" style="resize:none;"></textarea>
       <input type="text" name="website" class="hp-field" tabindex="-1" autocomplete="off">
+      <div class="consent-field">
+        <label class="consent"><input type="checkbox" name="consent" value="yes" required><span>Я даю <a href="soglasie-na-obrabotku-pd.html" class="pd-link" target="_blank" rel="noopener">согласие на обработку персональных данных</a> и принимаю <a href="politika-personalnyh-dannyh.html" class="pd-link" target="_blank" rel="noopener">политику обработки персональных данных</a></span></label>
+        <span class="field-error">Подтвердите согласие на обработку персональных данных</span>
+      </div>
       <div class="smart-captcha" data-sitekey="TEST_SITEKEY_TODO"></div>
       <button class="su-btn-blue" type="submit" style="width:100%; padding:13px;">Отправить заявку</button>
-      <p style="font-size:11px; color:#A0A6AE; text-align:center; margin:0;">Нажимая кнопку, вы соглашаетесь с политикой обработки персональных данных</p>
     </form>
     <div class="form-success" id="modal-success" style="display:none;">Спасибо! Заявка отправлена — мы свяжемся с вами в ближайшее время.</div>
   </div>
@@ -558,6 +586,9 @@
     reqModal.classList.add('open');
     reqModalContext.textContent = context || '';
     reqForm.reset();
+    const reqSubmitBtn = reqForm.querySelector('button[type="submit"]');
+    reqSubmitBtn.disabled = false;
+    reqSubmitBtn.textContent = 'Отправить заявку';
     reqForm.style.display = '';
     reqModalSuccess.style.display = 'none';
     reqForm.querySelectorAll('.field-error.show').forEach(el => el.classList.remove('show'));
@@ -584,11 +615,17 @@
     });
   });
 
+  document.querySelectorAll('.consent input').forEach(cb => cb.addEventListener('change', () => {
+    if (cb.checked) cb.closest('.consent-field').querySelector('.field-error').classList.remove('show');
+  }));
+
   function validateRequestForm(form) {
     let valid = true;
     form.querySelectorAll('[required]').forEach(field => {
-      const errorEl = field.nextElementSibling && field.nextElementSibling.classList.contains('field-error') ? field.nextElementSibling : null;
-      const filled = field.value.trim().length > 0;
+      const errorEl = field.type === 'checkbox'
+      ? field.closest('.consent-field').querySelector('.field-error')
+      : (field.nextElementSibling && field.nextElementSibling.classList.contains('field-error') ? field.nextElementSibling : null);
+      const filled = field.type === 'checkbox' ? field.checked : field.value.trim().length > 0;
       if (!filled) { valid = false; if (errorEl) errorEl.classList.add('show'); }
       else if (errorEl) errorEl.classList.remove('show');
     });
